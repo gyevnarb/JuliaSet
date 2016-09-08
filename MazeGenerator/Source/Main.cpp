@@ -10,16 +10,16 @@
 
 void setupGrid(OUT std::vector<Cell> &grid, const long &rows, const long &cols, const long &scale, const long &width, const long &height);
 void drawGrid(sf::RenderWindow *window, const std::vector<Cell> &grid);
-bool create(const long &rows, const long &cols, const long &scale, const long &width, const long &height, const bool &screenshot);
+int create(const long &rows, const long &cols, const long &scale, const long &width, const long &height, const bool &screenshot);
 bool takeScreenshot(const sf::RenderWindow & window);
-bool run(int argc, char *argv[]);
+int run(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
 	return run(argc, argv);
 }
 
-bool create(const long &rows, const long &cols, const long &scale, const long &width, const long &height, const bool &screenshot)
+int create(const long &rows, const long &cols, const long &scale, const long &width, const long &height, const bool &screenshot)
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "Maze");
 	window.setVerticalSyncEnabled(true);
@@ -124,7 +124,7 @@ bool takeScreenshot(const sf::RenderWindow & window)
 	return screenshot.saveToFile("maze.bmp");
 }
 
-bool run(int argc, char *argv[])
+int run(int argc, char *argv[])
 {
 	long scale = 40, width = 400, height = 400;
 	long cols = static_cast<long>(std::floor(width / scale));
